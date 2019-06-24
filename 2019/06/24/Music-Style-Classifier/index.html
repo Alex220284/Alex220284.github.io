@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://alex220284.github.io">
   <title>Music Style Classifier | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##项目介绍项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解p">
+  <meta name="description" content="##项目介绍 项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解">
 <meta name="keywords" content="projects">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Music Style Classifier">
 <meta property="og:url" content="https://alex220284.github.io/2019/06/24/Music-Style-Classifier/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="##项目介绍项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解p">
+<meta property="og:description" content="##项目介绍 项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-24T11:35:54.038Z">
+<meta property="og:updated_time" content="2019-06-24T12:06:59.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Music Style Classifier">
-<meta name="twitter:description" content="##项目介绍项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解p">
+<meta name="twitter:description" content="##项目介绍 项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解">
   
   
     <link rel="icon" href="/favicon.png">
@@ -45,11 +45,11 @@
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<a href="https://alex220284.github.io" class="profilepic">
+		<a href="/" class="profilepic">
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="https://alex220284.github.io">Alex Huang</a></h1>
+		  <h1 class="header-author"><a href="/">Alex Huang</a></h1>
 		</hgroup>
 		
 
@@ -165,40 +165,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##项目介绍<br>项目背景为爬取<a href="http://music.163.com/" target="_blank" rel="noopener">网易云音乐</a>歌单歌词，依据歌词进行SVM模型训练以及曲风预测。<br>此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。</p>
+        <p>##项目介绍</p>
+<p>项目背景为爬取<a href="http://music.163.com/" target="_blank" rel="noopener">网易云音乐</a>歌单歌词，依据歌词进行SVM模型训练以及曲风预测。<br>此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。</p>
 <ul>
-<li><p>数据获取</p>
+<li><p><strong>数据获取</strong></p>
 <p>通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见<a href="https://github.com/Alex220284/NLP-SVM/blob/master/src/crawl.py" target="_blank" rel="noopener">crawl.py</a> 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解python爬虫相关知识，可以阅读<a href="https://book.douban.com/subject/26958126/" target="_blank" rel="noopener">python网络爬虫实战</a> </p>
 </li>
-<li><p>数据整理</p>
+<li><p><strong>数据整理</strong></p>
 <p>爬取的每一首歌代表一个标签(古风或者流行)，如果直接使用歌词表示的向量来训练模型，存在耗时耗存储的问题，因此，这里使用<a href="https://www.cnblogs.com/pinard/p/6805861.html" target="_blank" rel="noopener">LSI</a> 来提取文本的潜在语义信息，也达到了压缩数据量的目的。</p>
 </li>
-<li><p>模型介绍</p>
+<li><p><strong>模型介绍</strong></p>
 <p>这里仅以<a href="https://blog.csdn.net/u012990623/article/details/40272619" target="_blank" rel="noopener">SVM</a> 模型为例，调用python机器学习包sklearn，进行SVM建模。</p>
 <p>可进行更多模型对比实验，如逻辑回归，集成学习(xgboost GBDT)等。</p>
 </li>
 </ul>
 <p>##代码说明</p>
 <ul>
-<li><p>conf</p>
+<li><p><strong>conf</strong></p>
 <p>存放配置文件，主要包括文件存放路径等</p>
 </li>
-<li><p>data</p>
+<li><p><strong>data</strong></p>
 <p>存放爬虫爬取的数据文件</p>
 </li>
-<li><p>doc</p>
+<li><p><strong>doc</strong></p>
 <p>存放说明文档</p>
 </li>
-<li><p>model</p>
+<li><p><strong>model</strong></p>
 <p>存放训练生成模型文件</p>
 </li>
-<li><p>src</p>
+<li><p><strong>src</strong></p>
 <p>包括爬虫，训练模型，模型预测</p>
 </li>
-<li><p>tools</p>
+<li><p><strong>tools</strong></p>
 <p>主要是文件读取的工具</p>
 </li>
-<li><p>test</p>
+<li><p><strong>test</strong></p>
 <p>存放测试文件，crawl、train、predict三者的测试，包括批量和单首歌</p>
 </li>
 </ul>
