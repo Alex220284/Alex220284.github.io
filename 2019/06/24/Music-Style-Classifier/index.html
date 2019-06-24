@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://alex220284.github.io">
-  <title>Hexo Simple Tutorial | Hexo</title>
+  <title>Music Style Classifier | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is my very first post for extraced from yilia. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can a">
-<meta name="keywords" content="Hexo">
+  <meta name="description" content="##项目介绍项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解p">
+<meta name="keywords" content="projects">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo Simple Tutorial">
-<meta property="og:url" content="https://alex220284.github.io/2019/06/24/Hexo_tutorial/index.html">
+<meta property="og:title" content="Music Style Classifier">
+<meta property="og:url" content="https://alex220284.github.io/2019/06/24/Music-Style-Classifier/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is my very first post for extraced from yilia. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can a">
+<meta property="og:description" content="##项目介绍项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解p">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-24T10:02:46.106Z">
+<meta property="og:updated_time" content="2019-06-24T11:35:54.038Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo Simple Tutorial">
-<meta name="twitter:description" content="Welcome to Hexo! This is my very first post for extraced from yilia. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can a">
+<meta name="twitter:title" content="Music Style Classifier">
+<meta name="twitter:description" content="##项目介绍项目背景为爬取网易云音乐歌单歌词，依据歌词进行SVM模型训练以及曲风预测。此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。  数据获取 通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见crawl.py 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解p">
   
   
     <link rel="icon" href="/favicon.png">
@@ -145,39 +145,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hexo_tutorial" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Music-Style-Classifier" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo Simple Tutorial
+      Music Style Classifier
     </h1>
   
 
         
-        <a href="/2019/06/24/Hexo_tutorial/" class="archive-article-date">
-  	<time datetime="2019-06-24T10:02:46.106Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
+        <a href="/2019/06/24/Music-Style-Classifier/" class="archive-article-date">
+  	<time datetime="2019-06-24T11:05:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is my very first post for extraced from <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a>. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask litten on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>##项目介绍<br>项目背景为爬取<a href="http://music.163.com/" target="_blank" rel="noopener">网易云音乐</a>歌单歌词，依据歌词进行SVM模型训练以及曲风预测。<br>此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。</p>
+<ul>
+<li><p>数据获取</p>
+<p>通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见<a href="https://github.com/Alex220284/NLP-SVM/blob/master/src/crawl.py" target="_blank" rel="noopener">crawl.py</a> 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解python爬虫相关知识，可以阅读<a href="https://book.douban.com/subject/26958126/" target="_blank" rel="noopener">python网络爬虫实战</a> </p>
+</li>
+<li><p>数据整理</p>
+<p>爬取的每一首歌代表一个标签(古风或者流行)，如果直接使用歌词表示的向量来训练模型，存在耗时耗存储的问题，因此，这里使用<a href="https://www.cnblogs.com/pinard/p/6805861.html" target="_blank" rel="noopener">LSI</a> 来提取文本的潜在语义信息，也达到了压缩数据量的目的。</p>
+</li>
+<li><p>模型介绍</p>
+<p>这里仅以<a href="https://blog.csdn.net/u012990623/article/details/40272619" target="_blank" rel="noopener">SVM</a> 模型为例，调用python机器学习包sklearn，进行SVM建模。</p>
+<p>可进行更多模型对比实验，如逻辑回归，集成学习(xgboost GBDT)等。</p>
+</li>
+</ul>
+<p>##代码说明</p>
+<ul>
+<li><p>conf</p>
+<p>存放配置文件，主要包括文件存放路径等</p>
+</li>
+<li><p>data</p>
+<p>存放爬虫爬取的数据文件</p>
+</li>
+<li><p>doc</p>
+<p>存放说明文档</p>
+</li>
+<li><p>model</p>
+<p>存放训练生成模型文件</p>
+</li>
+<li><p>src</p>
+<p>包括爬虫，训练模型，模型预测</p>
+</li>
+<li><p>tools</p>
+<p>主要是文件读取的工具</p>
+</li>
+<li><p>test</p>
+<p>存放测试文件，crawl、train、predict三者的测试，包括批量和单首歌</p>
+</li>
+</ul>
 
       
 
@@ -191,7 +215,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">projects</a>
         		</li>
       		
 		</ul>
@@ -247,7 +271,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://alex220284.github.io/2019/06/24/Hexo_tutorial/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://alex220284.github.io/2019/06/24/Music-Style-Classifier/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -261,15 +285,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/24/Music-Style-Classifier/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Music Style Classifier
-        
-      </div>
-    </a>
   
+    <a href="/2019/06/24/Hexo_tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo Simple Tutorial</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
