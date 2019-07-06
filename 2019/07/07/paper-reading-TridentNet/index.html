@@ -6,16 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://alex220284.github.io">
-  <title>Archives: 2019 | Alex&#39;s blogs</title>
+  <title>[Paper Reading] TridentNet | Alex&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="AI freshman">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alex&#39;s blogs">
-<meta property="og:url" content="https://alex220284.github.io/archives/2019/index.html">
+  <meta name="description" content="Scale-Aware Trident Networks for Object Detection背景介绍此文出自图森王乃岩团队，主要解决目标检测中多尺度问题。代码已开源，链接传送门  多尺度问题是目标检测中一个比较棘手的问题，为了解决这一问题也诞生了许多优秀的方法。解决问题思路主要有两个方面: 图像金字塔和特征金字塔。图像金字塔应该是比较直观的想法，利用输入resize到不同尺寸得到不同尺寸下的">
+<meta name="keywords" content="paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Paper Reading] TridentNet">
+<meta property="og:url" content="https://alex220284.github.io/2019/07/07/paper-reading-TridentNet/index.html">
 <meta property="og:site_name" content="Alex&#39;s blogs">
+<meta property="og:description" content="Scale-Aware Trident Networks for Object Detection背景介绍此文出自图森王乃岩团队，主要解决目标检测中多尺度问题。代码已开源，链接传送门  多尺度问题是目标检测中一个比较棘手的问题，为了解决这一问题也诞生了许多优秀的方法。解决问题思路主要有两个方面: 图像金字塔和特征金字塔。图像金字塔应该是比较直观的想法，利用输入resize到不同尺寸得到不同尺寸下的">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://alex220284.github.io/img/paper/tridenNet/1.png">
+<meta property="og:updated_time" content="2019-07-06T19:46:54.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex&#39;s blogs">
+<meta name="twitter:title" content="[Paper Reading] TridentNet">
+<meta name="twitter:description" content="Scale-Aware Trident Networks for Object Detection背景介绍此文出自图森王乃岩团队，主要解决目标检测中多尺度问题。代码已开源，链接传送门  多尺度问题是目标检测中一个比较棘手的问题，为了解决这一问题也诞生了许多优秀的方法。解决问题思路主要有两个方面: 图像金字塔和特征金字塔。图像金字塔应该是比较直观的想法，利用输入resize到不同尺寸得到不同尺寸下的">
+<meta name="twitter:image" content="https://alex220284.github.io/img/paper/tridenNet/1.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -141,36 +147,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-paper-reading-TridentNet" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/07/paper-reading-TridentNet/" class="archive-article-date">
-  	<time datetime="2019-07-06T18:41:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/07/paper-reading-TridentNet/">[Paper Reading] TridentNet</a>
+    <h1 class="article-title" itemprop="name">
+      [Paper Reading] TridentNet
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/07/paper-reading-TridentNet/" class="archive-article-date">
+  	<time datetime="2019-07-06T18:41:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Scale-Aware-Trident-Networks-for-Object-Detection"><a href="#Scale-Aware-Trident-Networks-for-Object-Detection" class="headerlink" title="Scale-Aware Trident Networks for Object Detection"></a><a href="https://arxiv.org/abs/1901.01892?context=cs.CV" target="_blank" rel="noopener">Scale-Aware Trident Networks for Object Detection</a></h2><h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p>此文出自图森王乃岩团队，主要解决目标检测中多尺度问题。代码已开源，<a href="https://github.com/TuSimple/simpledet/tree/master/models/tridentnet" target="_blank" rel="noopener">链接传送门</a> </p>
+<p>多尺度问题是目标检测中一个比较棘手的问题，为了解决这一问题也诞生了许多优秀的方法。解决问题思路主要有两个方面: 图像金字塔和特征金字塔。图像金字塔应该是比较直观的想法，利用输入resize到不同尺寸得到不同尺寸下的物体，在训练时和测试时便可以照顾到不同大小的物体，从而使得困难case(极大物体或者极小物体)得已检出，但是这牺牲了计算速度，因为做inference时需要计算多次，显然和商业应用需求不符；特征金字塔模型可以说是deep learning进入目标检测所诞生的方法，通过卷积我们可以获得不同尺度下(下采样倍数)的特征，这些特征映射回原图即对应着不同大小的区域，从而可以作为预测不同大小物体的特征层，有代表性的算法是<a href="https://arxiv.org/abs/1512.02325" target="_blank" rel="noopener">SSD</a> 和<a href="https://arxiv.org/abs/1612.03144" target="_blank" rel="noopener">FPN</a>  但是，这类方法往往难以取得和图像金字塔方法一样的结果，这是因为对于不同大小的同类物体，我们希望能提取到共同特征，但是在特征金字塔模型中，这一点往往不能满足，因为特征有不同特征层提取。</p>
+<p>作者基于上述两种方法的特点，归结到图像感受野的问题上，希望获得对不同大小的物体的一致性特征表达(representation)。借助于空洞卷积，变动rate，从而获得不同的分支，这些分支结构一样，参数共享(学习共性的特征表达)，但是感受也不一致。另外，论文也是用了独特的训练方式配合模型结构，细节后续讲解。</p>
+<p>三种方法结构图如下所示。<img src="/img/paper/tridenNet/1.png" alt="background"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -182,95 +190,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://alex220284.github.io/2019/07/07/paper-reading-TridentNet/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/24/Music-Style-Classifier/" class="archive-article-date">
-  	<time datetime="2019-06-24T11:05:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/24/Music-Style-Classifier/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Music Style Classifier</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/24/Music-Style-Classifier/">Music Style Classifier</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">projects</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/24/Hexo_tutorial/" class="archive-article-date">
-  	<time datetime="2019-06-24T10:02:46.106Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/24/Hexo_tutorial/">Hexo Simple Tutorial</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -291,8 +310,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
