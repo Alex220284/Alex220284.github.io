@@ -167,6 +167,38 @@
 <p>多尺度问题是目标检测中一个比较棘手的问题，为了解决这一问题也诞生了许多优秀的方法。解决问题思路主要有两个方面: 图像金字塔和特征金字塔。图像金字塔应该是比较直观的想法，利用输入resize到不同尺寸得到不同尺寸下的物体，在训练时和测试时便可以照顾到不同大小的物体，从而使得困难case(极大物体或者极小物体)得已检出，但是这牺牲了计算速度，因为做inference时需要计算多次，显然和商业应用需求不符；特征金字塔模型可以说是deep learning进入目标检测所诞生的方法，通过卷积我们可以获得不同尺度下(下采样倍数)的特征，这些特征映射回原图即对应着不同大小的区域，从而可以作为预测不同大小物体的特征层，有代表性的算法是<a href="https://arxiv.org/abs/1512.02325" target="_blank" rel="noopener">SSD</a> 和<a href="https://arxiv.org/abs/1612.03144" target="_blank" rel="noopener">FPN</a>  但是，这类方法往往难以取得和图像金字塔方法一样的结果，这是因为对于不同大小的同类物体，我们希望能提取到共同特征，但是在特征金字塔模型中，这一点往往不能满足，因为特征有不同特征层提取。</p>
 <p>作者基于上述两种方法的特点，归结到图像感受野的问题上，希望获得对不同大小的物体的一致性特征表达(representation)。借助于空洞卷积，变动rate，从而获得不同的分支，这些分支结构一样，参数共享(学习共性的特征表达)，但是感受也不一致。另外，论文也是用了独特的训练方式配合模型结构，细节后续讲解。</p>
 <p>三种方法结构图如下所示。<img src="/img/paper/tridenNet/1.png" alt="background"></p>
+<h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><p>目标检测领域一般可分为一阶段方法和两阶段方法，比较代表性的工作有RCNN，SPPNet，Fast-RCNN，Faster-RCNN(两阶段方法)，YOLO，SSD(一阶段方法)；或者按照处理多尺度问题划分，有基于图像金字塔(SNIP，SNIPER)和基于特征金字塔(FPN，SSD)。这里不对这些方法做深度探讨，仅对论文核心思想空洞卷积做介绍。</p>
+<p>空洞卷积，再语义分割任务中用得比较广泛，deeplab系列算法就是典型将空洞卷积玩出新花样的案例，也取得了比较好的效果。具体来说，一般卷积可以看做是rate为1的空洞卷积，卷积核连在一起，当增加rate，例如下图rate为2时，一个3x3的卷积核元素之间隔开了一个空洞，空洞对应像素不做处理，直观上看，在不增加参数量的情况下，获得了更大的感受野，这也是使用空洞卷积的好处。总而言之，空洞卷积的使用可以有效地控制卷积学习到的不同大小感受野下的特征，并且前提是不增加参数量。</p>
+<p><img src="/img/paper/tridenNet/2.png" alt="background"></p>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p>网络上的亮点主要有三点：多分支单元(Multi-branch Block)、分支间权重共享、scale-aware训练策略</p>
+<h4 id="多分支单元-Multi-branch-Block"><a href="#多分支单元-Multi-branch-Block" class="headerlink" title="多分支单元(Multi-branch Block)"></a>多分支单元(Multi-branch Block)</h4><p>多分支单元可以说是论文思想的基础，后续亮点改进都是围绕这个基础展开的。如结构图所示，采用多个分支进行输出，每个分支不同的地方在于使用了不同rate的空洞卷积，自然是为了覆盖不同大小的物体。</p>
+<h4 id="分支权重共享"><a href="#分支权重共享" class="headerlink" title="分支权重共享"></a>分支权重共享</h4><p>这一点是从特征金字塔的缺点出发，共享权重可以让模型学习出一个统一的特征表达，另外，权重共享也是一种减少过拟合的方式，同时使得模型参数不变，基本不损失计算速度，最后，参数基于不同rate训练，使得可以拟合不同大小不同感受野的物体。</p>
+<p>####scale-aware训练策略</p>
+<p>按照以上模型结构进行训练，会导致错误匹配的现象，例如小物体检测可能依赖于很大rate的空洞卷积，这样势必造成模型学习不稳定。因此作者提出了一种scale-aware训练策略。与SNIP类似，每一分支设定阈值，已有当ROI在该阈值范围内才用该分支进行计算以及梯度更新，也就是对每一分支挑选有效的proposal。</p>
+<h4 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h4><p>预测阶段进行多尺度预测，过滤掉不在该rate范围内的预测框，最后进行NMS得到的预测框。</p>
+<p>另外，作者也提出了一种快速的预测方式，选取中间rate的空洞卷积进行预测，其范围调整到0到正无穷大，这样基本不损失计算速度，而且实验发现，相较于一般预测方法，仅仅损失了一点精度。</p>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><p>这里是我觉得论文最出彩的地方吧。事实上，多分支单元，不知道作者是不是借鉴了语义分割中ASPP模块的思想，结构其实是相似的，目的是获取不同感受野下的特征，基于此设计了权重共享以及训练策略。这些改进是否work作者进行了大量的ablation实验进行证明，可以说有理有据，也是我比较欣赏的一点吧，这也应该是一篇优秀论文该有的样子，而不是仅仅堆砌实验结果。</p>
+<p>跳到论文5.2节 Ablation Studies</p>
+<h4 id="Components-of-TridentNet"><a href="#Components-of-TridentNet" class="headerlink" title="Components of TridentNet"></a>Components of TridentNet</h4><p>实验结果如下图。<img src="/img/paper/tridenNet/3.png" alt="components"></p>
+<ul>
+<li><p>Multi-branch </p>
+<p>仅添加多分支结构也能带来1-2个点的提升，尤其对于大物体检测，这也说明了多分支结构的优越性。</p>
+</li>
+<li><p>Scale-aware </p>
+<p>Scale-aware 训练方式在小物体上有近一个点的提升，但是在大物体检测上有所下降。猜测是因为在去除计算样本的时候减少了样本量，从而使得模型初显过拟合的风险。</p>
+</li>
+<li><p>Weight-sharing </p>
+<p>共享权重在两个backbone模型上都取得了效果的提升，也验证了权重共享的有效性。</p>
+</li>
+</ul>
+<h4 id="Number-of-branches"><a href="#Number-of-branches" class="headerlink" title="Number of branches"></a>Number of branches</h4><p>下图展示了不同分支数量的效果比较图，注意到4个分支并未有带来精度上的巨大提升，因此，考虑到精度和计算效率问题，实验选择3个分支</p>
+<p><img src="/img/paper/tridenNet/4.png" alt="branchs"></p>
+<h4 id="Stage-of-Trident-blocks"><a href="#Stage-of-Trident-blocks" class="headerlink" title="Stage of Trident blocks"></a>Stage of Trident blocks</h4><p>下图展示了在不同的卷积stage(stage的理解可以看做是每一个下采样单元，具体见resnet结构)添加多分支单元(Trident blocks)的效果差异，实验表明conv4阶段提升最大，这是因为conv2和conv3感受野多样性不足。</p>
+<p><img src="/img/paper/tridenNet/5.png" alt="branchs"></p>
+<h4 id="Number-of-trident-blocks"><a href="#Number-of-trident-blocks" class="headerlink" title="Number of trident blocks"></a>Number of trident blocks</h4><p>下图展示了trident blocks数量对模型的影响，实验证明，当数量超过10之后性能开始稳定，此时感受野多样性开始稳定。</p>
+<p><img src="/img/paper/tridenNet/6.png" alt="branchs"></p>
+<h4 id="Performance-of-each-branch"><a href="#Performance-of-each-branch" class="headerlink" title="Performance of each branch"></a>Performance of each branch</h4><p>下图展示了不同分支的表现，这里不对分支范围进行限制。实验中第一分支对小物体检测好，第二分支对中等物体检测好，第三分支对大物体检测好，三个分支合起来检测效果最好。更进一步地，在快速预测算法中，选择第二分支进行预测，在此预测方法下，扩大scale范围可以提高精度。</p>
+<p><img src="/img/paper/tridenNet/7.png" alt="branchs"></p>
 
       
 
