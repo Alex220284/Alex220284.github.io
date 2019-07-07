@@ -163,7 +163,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Scale-Aware-Trident-Networks-for-Object-Detection"><a href="#Scale-Aware-Trident-Networks-for-Object-Detection" class="headerlink" title="Scale-Aware Trident Networks for Object Detection"></a><a href="https://arxiv.org/abs/1901.01892?context=cs.CV" target="_blank" rel="noopener">Scale-Aware Trident Networks for Object Detection</a></h2><p> *
+        <h2 id="Scale-Aware-Trident-Networks-for-Object-Detection"><a href="#Scale-Aware-Trident-Networks-for-Object-Detection" class="headerlink" title="Scale-Aware Trident Networks for Object Detection"></a><a href="https://arxiv.org/abs/1901.01892?context=cs.CV" target="_blank" rel="noopener">Scale-Aware Trident Networks for Object Detection</a></h2>
         
           <a class="article-more-a" href="/2019/07/07/paper-reading-TridentNet/#more">more >></a>
         
@@ -239,10 +239,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> *
-        
-          <a class="article-more-a" href="/2019/06/24/Music-Style-Classifier/#more">more >></a>
-        
+         <a id="more"></a>
+
+<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p><a href="https://github.com/Alex220284/NLP-SVM" target="_blank" rel="noopener">项目</a> 背景为爬取<a href="http://music.163.com/" target="_blank" rel="noopener">网易云音乐</a>歌单歌词，依据歌词进行SVM模型训练以及曲风预测。<br>此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。</p>
+<ul>
+<li><p><strong>数据获取</strong></p>
+<p>通过爬虫获取网易云音乐歌单类歌曲歌词，主要使用python包selenium实现网页的动态爬取，详细代码可参见<a href="https://github.com/Alex220284/NLP-SVM/blob/master/src/crawl.py" target="_blank" rel="noopener">crawl.py</a> 代码部分比较容易理解，可类似的爬取其他网站，如果需要更详细地了解python爬虫相关知识，可以阅读<a href="https://book.douban.com/subject/26958126/" target="_blank" rel="noopener">python网络爬虫实战</a> </p>
+</li>
+<li><p><strong>数据整理</strong></p>
+<p>爬取的每一首歌代表一个标签(古风或者流行)，如果直接使用歌词表示的向量来训练模型，存在耗时耗存储的问题，因此，这里使用<a href="https://www.cnblogs.com/pinard/p/6805861.html" target="_blank" rel="noopener">LSI</a> 来提取文本的潜在语义信息，也达到了压缩数据量的目的。</p>
+</li>
+<li><p><strong>模型介绍</strong></p>
+<p>这里仅以<a href="https://blog.csdn.net/u012990623/article/details/40272619" target="_blank" rel="noopener">SVM</a> 模型为例，调用python机器学习包sklearn，进行SVM建模。</p>
+<p>可进行更多模型对比实验，如逻辑回归，集成学习(xgboost GBDT)等。</p>
+</li>
+</ul>
+<h2 id="代码说明"><a href="#代码说明" class="headerlink" title="代码说明"></a>代码说明</h2><ul>
+<li><p><strong>conf</strong></p>
+<p>存放配置文件，主要包括文件存放路径等</p>
+</li>
+<li><p><strong>data</strong></p>
+<p>存放爬虫爬取的数据文件</p>
+</li>
+<li><p><strong>doc</strong></p>
+<p>存放说明文档</p>
+</li>
+<li><p><strong>model</strong></p>
+<p>存放训练生成模型文件</p>
+</li>
+<li><p><strong>src</strong></p>
+<p>包括爬虫，训练模型，模型预测</p>
+</li>
+<li><p><strong>tools</strong></p>
+<p>主要是文件读取的工具</p>
+</li>
+<li><p><strong>test</strong></p>
+<p>存放测试文件，crawl、train、predict三者的测试，包括批量和单首歌</p>
+</li>
+</ul>
+
       
 
       
@@ -315,10 +350,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> *
-        
-          <a class="article-more-a" href="/2019/06/24/Hexo_tutorial/#more">more >></a>
-        
+         <a id="more"></a>
+
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is my very first post for extraced from <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a>. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask litten on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
       
 
       
