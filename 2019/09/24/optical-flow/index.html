@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow.gif">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow2.jpg">
-<meta property="og:updated_time" content="2019-09-24T02:47:12.539Z">
+<meta property="og:updated_time" content="2019-09-24T02:50:11.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optical Flow">
 <meta name="twitter:description" content="前言之前做了一些视频相关的工作，大多数与光流有关，甚至于是提升性能或者建立模型的要素之一。在深度学习大火之前，光流就已经存在，可以算作是传统(相对于深度学习)计算机图形学的一大杰作吧，它反映的是连续帧间物体的运动信息，这对于视频层面的分析极为有利，这样的信息直接加到深度学习网络中可以有效地指导网络学习可用的特征。当然，现在也有用深度学习的方法研究光流，有代表性的数FlowNet，这里先讲解传统光流">
@@ -179,7 +179,7 @@
 <h2 id="光流法原理"><a href="#光流法原理" class="headerlink" title="光流法原理"></a>光流法原理</h2><p>Opencv中提供光流估计的算法，包括稀疏光流cv2.calcOpticalFlowPyrLK()和稠密光流cv2.calcOpticalFlowFarneback()，其中稀疏光流估计算法为Lucas-Kanade算法，该算法为1981年由Lucas和Kanade两位科学家提出的，最为经典也较容易理解的算法。</p>
 <h3 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h3><ol>
 <li><p>亮度不变假设。假设待估计的光流的两帧图像同一物体的亮度不变。这个假设基本成立，因为光照环境通常不会有太大变化。</p>
-<p>假设$$t$$时刻，位于$$(x, y)$$像素的物体，在$$t+\Delta(t)$$位置，基于亮度不变假设，有$$I(x, y, t) = I(x+u, y+v, t+\Delta(t))$$</p>
+<p>假设$$t$$时刻，位于$(x, y)$像素的物体，在$t+\Delta(t)$位置，基于亮度不变假设，有$$I(x, y, t) = I(x+u, y+v, t+\Delta(t))$$</p>
 </li>
 </ol>
 
