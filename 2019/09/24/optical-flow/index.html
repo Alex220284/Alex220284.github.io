@@ -18,7 +18,8 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow.gif">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow2.jpg">
-<meta property="og:updated_time" content="2019-09-24T06:53:37.009Z">
+<meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow3.png">
+<meta property="og:updated_time" content="2019-09-24T06:56:43.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optical Flow">
 <meta name="twitter:description" content="前言之前做了一些视频相关的工作，大多数与光流有关，甚至于是提升性能或者建立模型的要素之一。在深度学习大火之前，光流就已经存在，可以算作是传统(相对于深度学习)计算机图形学的一大杰作吧，它反映的是连续帧间物体的运动信息，这对于视频层面的分析极为有利，这样的信息直接加到深度学习网络中可以有效地指导网络学习可用的特征。当然，现在也有用深度学习的方法研究光流，有代表性的数FlowNet，这里先讲解传统光流">
@@ -187,14 +188,8 @@
 <p>写成矩阵形式$$ \begin{bmatrix} I_{x}’ &amp; I_{y}’   \end{bmatrix}  \begin{bmatrix} u  \\  v   \end{bmatrix} =  -I_{t}’\Delta(t)$$</p>
 <p>其中，$I_{x}’ $ 和 $I_{y}’$ 分别表示 $(x, y)$ 像素点处图像亮度在$x$和$y$方向的偏导数，即图像 $x$ 和 $y$ 方向的梯度，$I_{t}’\Delta(t)$ 表示两帧间在$(x, y)$处的像素差，即 $I_{t}’\Delta(t) = \Delta(I_{t})$ ，因此，$$\begin{bmatrix} I_{x}’ &amp; I_{y}’ \end{bmatrix} \begin{bmatrix} u  \\  v  \end{bmatrix} = \Delta(I_{t})$$</p>
 <p>给定两张图像，$ I_{x}’, I_{y}’, \Delta(I_{t})$均为已知量，$u, v$为待求光流，两个未知量，一个等式，无法给出唯一解，因此，需要引出第二条假设，邻域光流相似假设。</p>
-<h4 id="邻域光流相似假设"><a href="#邻域光流相似假设" class="headerlink" title="邻域光流相似假设"></a>邻域光流相似假设</h4><p>$${I}_{x}’^{(1)}$$</p>
-<p>$${I}_{y}’^{(1)}$$</p>
-<p>$${I}_{x}’^{(2)}$$</p>
-<p>$${I}_{y}’^{(2)}$$</p>
-<p>$${I}_{x}’^{(n)}$$</p>
-<p>$${I}_{y}’^{(n)}$$</p>
-<p>$$\begin{bmatrix} u \\ v   \end{bmatrix}  = - \Delta(I_{t})$$</p>
-<p>以像素点$(x, y)$为中心，设定3x3的邻域，假设该邻域内的所有像素点光流值一致，通常，一个小的图像区域里像素移动方向和大小是基本一致的，因此，这个假设也是合理的。借助该假设，领域内的所有像素都有式$$\begin{bmatrix} {I}<em>{x}’^{(1)}  &amp; {I}</em>{y}’^{(1)}  \\  {I}<em>{x}’^{(2)}  &amp; {I}</em>{y}’^{(2)} \\ …… \\ {I}<em>{x}’^{(n)} &amp; {I}</em>{y}’^{(n)}  \end{bmatrix}  $$</p>
+<h4 id="邻域光流相似假设"><a href="#邻域光流相似假设" class="headerlink" title="邻域光流相似假设"></a>邻域光流相似假设</h4><p>以像素点$(x, y)$为中心，设定3x3的邻域，假设该邻域内的所有像素点光流值一致，通常，一个小的图像区域里像素移动方向和大小是基本一致的，因此，这个假设也是合理的。借助该假设，领域内的所有像素都有式</p>
+<p><img src="/img/optical_flow/flow3.png" alt="方程组"></p>
 <p>上式即为$Ax = b$的形式，可求得光流$x = (u, v)$的最小二乘解，可使用$x = {({A}^{T}A)}^{-1}{A}^{T}b$进行求解，但是要求${A}^{T}A$可逆，如果不可逆，将出现多解，因此，Lucas-Kanade方法将选取一些使得${A}^{T}A$可逆的像素点估计光流，这些点是一些亮度变化明显的角点。</p>
 
       
