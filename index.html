@@ -165,30 +165,9 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前做了一些视频相关的工作，大多数与光流有关，甚至于是提升性能或者建立模型的要素之一。在深度学习大火之前，光流就已经存在，可以算作是传统(相对于深度学习)计算机图形学的一大杰作吧，它反映的是连续帧间物体的运动信息，这对于视频层面的分析极为有利，这样的信息直接加到深度学习网络中可以有效地指导网络学习可用的特征。当然，现在也有用深度学习的方法研究光流，有代表性的数FlowNet，这里先讲解传统光流计算方式，深度学习相关应用之后有时间会另开专题讲解。</p>
 <p>以下refer to <a href="https://zhuanlan.zhihu.com/p/74460341" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/74460341</a></p>
-<h2 id="光流解释"><a href="#光流解释" class="headerlink" title="光流解释"></a>光流解释</h2><p><strong>光流</strong>是空间运动物体在观察成像平面上的像素运动的瞬时速度。</p>
-<p><strong>光流法</strong>是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。</p>
-<p>通常将二维图像平面特定坐标点上的<strong>灰度</strong>瞬时变化率定义为<strong>光流矢量</strong></p>
-<p>根据是否选取图像稀疏点进行光流估计，可以将光流估计分为稀疏光流和稠密光流，如图1，左图选取了一些特征明显（梯度较大）的点进行光流估计和跟踪，右图为连续帧稠密光流示意图。</p>
-<p><img src="/img/optical_flow/flow.gif" alt="图1 稀疏光流和稠密光流"></p>
-<p>稠密光流描述图像每个像素向下一帧运动的光流，为了方便表示，使用不同的颜色和亮度表示光流的大小和方向，如图2右图的不同颜色。图2展示了一种光流和颜色的映射关系，使用颜色表示光流的方向，亮度表示光流的大小。</p>
-<p><img src="/img/optical_flow/flow2.jpg" alt="图2 稠密光流颜色映射"></p>
-<h2 id="光流法原理"><a href="#光流法原理" class="headerlink" title="光流法原理"></a>光流法原理</h2><p>Opencv中提供光流估计的算法，包括稀疏光流cv2.calcOpticalFlowPyrLK()和稠密光流cv2.calcOpticalFlowFarneback()，其中稀疏光流估计算法为Lucas-Kanade算法，该算法为1981年由Lucas和Kanade两位科学家提出的，最为经典也较容易理解的算法。</p>
-<h3 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h3><h4 id="亮度不变假设"><a href="#亮度不变假设" class="headerlink" title="亮度不变假设"></a>亮度不变假设</h4><p>亮度不变假设。假设待估计的光流的两帧图像同一物体的亮度不变。这个假设基本成立，因为光照环境通常不会有太大变化。</p>
-<p>假设$$t$$时刻，位于$(x, y)$像素的物体，在$t+\Delta(t)$位置，基于亮度不变假设，有​</p>
-<p>$$I(x, y, t) = I(x+u, y+v, t+\Delta(t))$$</p>
-<p>进行一阶泰勒展开，则</p>
-<p> $$I(x+u, y+v, t+\Delta(t)) = I(x, y, t) + I’<em>{x}u+I’</em>{y}v + I’_{t}\Delta(t)$$</p>
-<p>进一步，那么</p>
-<p> $$I’<em>{x}u+I’</em>{y}v + I’_{t}\Delta(t) = 0$$</p>
-<p>写成矩阵形式</p>
-<p>$$\left[ \begin{matrix} I’<em>{x} &amp; I’</em>{y}   \end{matrix} \right]  \left[ \begin{matrix} u \ v   \end{matrix} \right] =  -I’_{t}\Delta(t)$$</p>
-<p>其中，$I’<em>{x} $ 和 $I’</em>{y}$ 分别表示 $(x, y)$ 像素点处图像亮度在$x$和$y$方向的偏导数，即图像 $x$ 和 $y$ 方向的梯度，$I’<em>{t}\Delta(t)$ 表示两帧间在$(x, y)$处的像素差，即 $I’</em>{t}\Delta(t) = \Delta(I_{t})$ ，因此，</p>
-<p>$$\left[ \begin{matrix} I’<em>{x} &amp; I’</em>{y}   \end{matrix} \right]  \left[ \begin{matrix} u \ v   \end{matrix} \right] = \Delta(I_{t})$$</p>
-<p>给定两张图像，$ I’<em>{x}, I’</em>{y}, \Delta(I_{t})$均为已知量，$u, v$为待求光流，两个未知量，一个等式，无法给出唯一解，因此，需要引出第二条假设，邻域光流相似假设。</p>
-<h4 id="邻域光流相似假设"><a href="#邻域光流相似假设" class="headerlink" title="邻域光流相似假设"></a>邻域光流相似假设</h4><p>以像素点$(x, y)$为中心，设定3x3的邻域，假设该邻域内的所有像素点光流值一致，通常，一个小的图像区域里像素移动方向和大小是基本一致的，因此，这个假设也是合理的。借助该假设，领域内的所有像素都有式</p>
-<p>$$\left[ \begin{matrix} {I}’^{(1)}<em>{x}  &amp; {I}’^{(1)}</em>{y} \ {I}’^{(2)}<em>{x}  &amp; {I}’^{(2)}</em>{y} \ …. \ {I}’^{(n)}<em>{x} &amp; {I}’^{(n)}</em>{y}  \end{matrix} \right]  \left[ \begin{matrix} u \ v   \end{matrix} \right] = - \Delta(I_{t})$$</p>
-<p>上式即为$Ax = b$的形式，可求得光流$x = (u, v)$的最小二乘解，可使用$x = {({A}^{T}A)}^{-1}{A}^{T}b$进行求解，但是要求${A}^{T}A$可逆，如果不可逆，将出现多解，因此，Lucas-Kanade方法将选取一些使得${A}^{T}A$可逆的像素点估计光流，这些点是一些亮度变化明显的角点。</p>
-
+        
+          <a class="article-more-a" href="/2019/09/24/optical-flow/#more">more >></a>
+        
       
 
       

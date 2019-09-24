@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow.gif">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow2.jpg">
-<meta property="og:updated_time" content="2019-09-24T03:55:49.699Z">
+<meta property="og:updated_time" content="2019-09-24T03:59:34.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optical Flow">
 <meta name="twitter:description" content="前言之前做了一些视频相关的工作，大多数与光流有关，甚至于是提升性能或者建立模型的要素之一。在深度学习大火之前，光流就已经存在，可以算作是传统(相对于深度学习)计算机图形学的一大杰作吧，它反映的是连续帧间物体的运动信息，这对于视频层面的分析极为有利，这样的信息直接加到深度学习网络中可以有效地指导网络学习可用的特征。当然，现在也有用深度学习的方法研究光流，有代表性的数FlowNet，这里先讲解传统光流">
@@ -170,6 +170,8 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前做了一些视频相关的工作，大多数与光流有关，甚至于是提升性能或者建立模型的要素之一。在深度学习大火之前，光流就已经存在，可以算作是传统(相对于深度学习)计算机图形学的一大杰作吧，它反映的是连续帧间物体的运动信息，这对于视频层面的分析极为有利，这样的信息直接加到深度学习网络中可以有效地指导网络学习可用的特征。当然，现在也有用深度学习的方法研究光流，有代表性的数FlowNet，这里先讲解传统光流计算方式，深度学习相关应用之后有时间会另开专题讲解。</p>
 <p>以下refer to <a href="https://zhuanlan.zhihu.com/p/74460341" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/74460341</a></p>
+ <a id="more"></a>
+
 <h2 id="光流解释"><a href="#光流解释" class="headerlink" title="光流解释"></a>光流解释</h2><p><strong>光流</strong>是空间运动物体在观察成像平面上的像素运动的瞬时速度。</p>
 <p><strong>光流法</strong>是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。</p>
 <p>通常将二维图像平面特定坐标点上的<strong>灰度</strong>瞬时变化率定义为<strong>光流矢量</strong></p>
