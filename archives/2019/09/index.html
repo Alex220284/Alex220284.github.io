@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://alex220284.github.io">
-  <title>Alex&#39;s blogs</title>
+  <title>Archives: 2019/9 | Alex&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="AI freshman">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alex&#39;s blogs">
-<meta property="og:url" content="https://alex220284.github.io/index.html">
+<meta property="og:url" content="https://alex220284.github.io/archives/2019/09/index.html">
 <meta property="og:site_name" content="Alex&#39;s blogs">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -143,48 +143,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-optical-flow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/24/optical-flow/" class="archive-article-date">
+  	<time datetime="2019-09-24T01:56:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/24/optical-flow/">Optical Flow</a>
+      <a class="archive-article-title" href="/2019/09/24/optical-flow/">Optical Flow</a>
     </h1>
   
 
-        
-        <a href="/2019/09/24/optical-flow/" class="archive-article-date">
-  	<time datetime="2019-09-24T01:56:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前做了一些视频相关的工作，大多数与光流有关，甚至于是提升性能或者建立模型的要素之一。在深度学习大火之前，光流就已经存在，可以算作是传统(相对于深度学习)计算机图形学的一大杰作吧，它反映的是连续帧间物体的运动信息，这对于视频层面的分析极为有利，这样的信息直接加到深度学习网络中可以有效地指导网络学习可用的特征。当然，现在也有用深度学习的方法研究光流，有代表性的数FlowNet，这里先讲解传统光流计算方式，深度学习相关应用之后有时间会另开专题讲解。</p>
-<h2 id="光流解释"><a href="#光流解释" class="headerlink" title="光流解释"></a>光流解释</h2><p><strong>光流</strong>是空间运动物体在观察成像平面上的像素运动的瞬时速度。</p>
-<p><strong>光流法</strong>是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。</p>
-<p>通常将二维图像平面特定坐标点上的<strong>灰度</strong>瞬时变化率定义为<strong>光流矢量</strong></p>
-<p>根据是否选取图像稀疏点进行光流估计，可以将光流估计分为稀疏光流和稠密光流，如图1，左图选取了一些特征明显（梯度较大）的点进行光流估计和跟踪，右图为连续帧稠密光流示意图。</p>
-<p><img src="/img/optical_flow/flow.gif" alt="图1 稀疏光流和稠密光流"></p>
-<p>稠密光流描述图像每个像素向下一帧运动的光流，为了方便表示，使用不同的颜色和亮度表示光流的大小和方向，如图2右图的不同颜色。图2展示了一种光流和颜色的映射关系，使用颜色表示光流的方向，亮度表示光流的大小。</p>
-<p><img src="/img/optical_flow/flow2.jpg" alt="图2 稠密光流颜色映射"></p>
-<h2 id="光流法原理"><a href="#光流法原理" class="headerlink" title="光流法原理"></a>光流法原理</h2><p>Opencv中提供光流估计的算法，包括稀疏光流cv2.calcOpticalFlowPyrLK()和稠密光流cv2.calcOpticalFlowFarneback()，其中稀疏光流估计算法为Lucas-Kanade算法，该算法为1981年由Lucas和Kanade两位科学家提出的，最为经典也较容易理解的算法。</p>
-<h3 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h3><ol>
-<li><p>亮度不变假设。假设待估计的光流的两帧图像同一物体的亮度不变。这个假设基本成立，因为光照环境通常不会有太大变化。</p>
-<p>假设$$t$$时刻，位于$$(x, y)$$像素的物体，在$$t+\Delta(t)$$位置，基于亮度不变假设，有$$I(x, y, t) = I(x+u, y+v, t+\Delta(t))$$</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,193 +182,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/24/optical-flow/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-Music-Style-Classifier" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/24/Music-Style-Classifier/">Music Style Classifier</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/24/Music-Style-Classifier/" class="archive-article-date">
-  	<time datetime="2019-06-24T11:05:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p><a href="https://github.com/Alex220284/NLP-SVM" target="_blank" rel="noopener">项目</a> 背景为爬取<a href="http://music.163.com/" target="_blank" rel="noopener">网易云音乐</a>歌单歌词，依据歌词进行SVM模型训练以及曲风预测。<br>此项目为进行机器学习比较完整的项目，包含数据获取，数据整理，模型建立，训练模型以及预测等，可作为入门案例。</p>
-        
-          <a class="article-more-a" href="/2019/06/24/Music-Style-Classifier/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">projects</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/24/Music-Style-Classifier/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo_tutorial" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/24/Hexo_tutorial/">Hexo Simple Tutorial</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/24/Hexo_tutorial/" class="archive-article-date">
-  	<time datetime="2019-06-24T10:02:46.106Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is my very first post for extraced from <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a>. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask litten on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        
-          <a class="article-more-a" href="/2019/06/24/Hexo_tutorial/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/24/Hexo_tutorial/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -402,9 +214,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
