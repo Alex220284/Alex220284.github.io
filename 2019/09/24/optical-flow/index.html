@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow.gif">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow2.jpg">
-<meta property="og:updated_time" content="2019-09-24T06:51:39.046Z">
+<meta property="og:updated_time" content="2019-09-24T06:53:37.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optical Flow">
 <meta name="twitter:description" content="前言之前做了一些视频相关的工作，大多数与光流有关，甚至于是提升性能或者建立模型的要素之一。在深度学习大火之前，光流就已经存在，可以算作是传统(相对于深度学习)计算机图形学的一大杰作吧，它反映的是连续帧间物体的运动信息，这对于视频层面的分析极为有利，这样的信息直接加到深度学习网络中可以有效地指导网络学习可用的特征。当然，现在也有用深度学习的方法研究光流，有代表性的数FlowNet，这里先讲解传统光流">
@@ -194,7 +194,7 @@
 <p>$${I}_{x}’^{(n)}$$</p>
 <p>$${I}_{y}’^{(n)}$$</p>
 <p>$$\begin{bmatrix} u \\ v   \end{bmatrix}  = - \Delta(I_{t})$$</p>
-<p>以像素点$(x, y)$为中心，设定3x3的邻域，假设该邻域内的所有像素点光流值一致，通常，一个小的图像区域里像素移动方向和大小是基本一致的，因此，这个假设也是合理的。借助该假设，领域内的所有像素都有式$$\begin{bmatrix} {I}<em>{x}’^{(1)}  &amp; {I}</em>{y}’^{(1)}  \\  {I}<em>{x}’^{(2)}  &amp; {I}</em>{y}’^{(2)} \\ \cdots \\ {I}<em>{x}’^{(n)} &amp; {I}</em>{y}’^{(n)}  \end{bmatrix}  $$</p>
+<p>以像素点$(x, y)$为中心，设定3x3的邻域，假设该邻域内的所有像素点光流值一致，通常，一个小的图像区域里像素移动方向和大小是基本一致的，因此，这个假设也是合理的。借助该假设，领域内的所有像素都有式$$\begin{bmatrix} {I}<em>{x}’^{(1)}  &amp; {I}</em>{y}’^{(1)}  \\  {I}<em>{x}’^{(2)}  &amp; {I}</em>{y}’^{(2)} \\ …… \\ {I}<em>{x}’^{(n)} &amp; {I}</em>{y}’^{(n)}  \end{bmatrix}  $$</p>
 <p>上式即为$Ax = b$的形式，可求得光流$x = (u, v)$的最小二乘解，可使用$x = {({A}^{T}A)}^{-1}{A}^{T}b$进行求解，但是要求${A}^{T}A$可逆，如果不可逆，将出现多解，因此，Lucas-Kanade方法将选取一些使得${A}^{T}A$可逆的像素点估计光流，这些点是一些亮度变化明显的角点。</p>
 
       
