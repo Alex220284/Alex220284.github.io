@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow.gif">
 <meta property="og:image" content="https://alex220284.github.io/img/optical_flow/flow2.jpg">
-<meta property="og:updated_time" content="2019-09-24T06:09:44.182Z">
+<meta property="og:updated_time" content="2019-09-24T06:14:56.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optical Flow">
 <meta name="twitter:description" content="前言之前做了一些视频相关的工作，大多数与光流有关，甚至于是提升性能或者建立模型的要素之一。在深度学习大火之前，光流就已经存在，可以算作是传统(相对于深度学习)计算机图形学的一大杰作吧，它反映的是连续帧间物体的运动信息，这对于视频层面的分析极为有利，这样的信息直接加到深度学习网络中可以有效地指导网络学习可用的特征。当然，现在也有用深度学习的方法研究光流，有代表性的数FlowNet，这里先讲解传统光流">
@@ -182,8 +182,8 @@
 <h2 id="光流法原理"><a href="#光流法原理" class="headerlink" title="光流法原理"></a>光流法原理</h2><p>Opencv中提供光流估计的算法，包括稀疏光流cv2.calcOpticalFlowPyrLK()和稠密光流cv2.calcOpticalFlowFarneback()，其中稀疏光流估计算法为Lucas-Kanade算法，该算法为1981年由Lucas和Kanade两位科学家提出的，最为经典也较容易理解的算法。</p>
 <h3 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h3><h4 id="亮度不变假设"><a href="#亮度不变假设" class="headerlink" title="亮度不变假设"></a>亮度不变假设</h4><p>亮度不变假设。假设待估计的光流的两帧图像同一物体的亮度不变。这个假设基本成立，因为光照环境通常不会有太大变化。</p>
 <p>假设$t$时刻，位于$(x, y)$像素的物体，在$t+\Delta(t)$位置，基于亮度不变假设，有$$I(x, y, t) = I(x+u, y+v, t+\Delta(t))$$</p>
-<p>$$k’<em>{x}=\lim</em>{\Delta x\to 0}\frac{k(x)-k(x-\Delta x)}{\Delta x}$$</p>
-<p>进行一阶泰勒展开，则 $$I(x+u, y+v, t+\Delta(t)) = I(x, y, t) + I’<em>{x} u + I’</em>{y} v + I’_{t} \Delta(t) $$</p>
+<p>$$k_{x}’=\lim_{\Delta x\to 0}\frac{k(x)-k(x-\Delta x)}{\Delta x}$$</p>
+<p>进行一阶泰勒展开，则 $$I(x+u, y+v, t+\Delta(t)) = I(x, y, t) + I_{x}’ u + I_{y}’ v + I_{t}’ \Delta(t) $$</p>
 <p>进一步，那么 $$I’<em>{x}u+I’</em>{y}v + I’_{t}\Delta(t) = 0$$</p>
 <p>写成矩阵形式$$\left[ \begin{matrix} I’<em>{x} &amp; I’</em>{y}   \end{matrix} \right]  \left[ \begin{matrix} u \ v   \end{matrix} \right] =  -I’_{t}\Delta(t)$$</p>
 <p>其中，$I’<em>{x} $ 和 $I’</em>{y}$ 分别表示 $(x, y)$ 像素点处图像亮度在$x$和$y$方向的偏导数，即图像 $x$ 和 $y$ 方向的梯度，$I’<em>{t}\Delta(t)$ 表示两帧间在$(x, y)$处的像素差，即 $I’</em>{t}\Delta(t) = \Delta(I_{t})$ ，因此，$$\left[ \begin{matrix} I’<em>{x} &amp; I’</em>{y}   \end{matrix} \right]  \left[ \begin{matrix} u \ v   \end{matrix} \right] = \Delta(I_{t})$$</p>
